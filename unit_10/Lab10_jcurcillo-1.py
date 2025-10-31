@@ -7,6 +7,8 @@ Date: 10/30/2025
 from pathlib import Path
 
 
+
+
 def printWds(data):
     #print each key-value pair
     for i in sorted(data.keys()):
@@ -18,7 +20,7 @@ def wordFreq(file):
     #empty data type
     freq = {}
     #punctuation
-    punctChars = ['.', ',', '?', '!', ';', ':', '"', "'", '-', '(', ')', '[', ']', '{', '}', '*']
+    punctChars = ['“', '’', '‘', '”', '.', ',', '?', '!', ';', ':', '"', "'", '-', '(', ')', '[', ']', '{', '}', '*']
 
     
     #read first line
@@ -47,10 +49,10 @@ def wordFreq(file):
 def main():
     while True:
         try:
-            base_path = Path('unit_10')
+            base_path = Path(__file__).parent
             shorthand_file = input('Enter file name here (Tarzan.txt): ')
             file_name = base_path / shorthand_file
-            with open(file_name, 'r') as file:
+            with open(file_name, 'r', encoding='utf-8-sig') as file:
                 data = wordFreq(file)
                 printWds(data)
         except FileNotFoundError:
