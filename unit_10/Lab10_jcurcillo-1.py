@@ -45,15 +45,20 @@ def wordFreq(file):
 
 
 def main():
-    try:
-        base_path = Path('unit_10')
-        shorthand_file = input('Enter file name here (Tarzan.txt): ')
-        file_name = base_path / shorthand_file
-        with open(file_name, 'r') as file:
-            data = wordFreq(file)
-            printWds(data)
-    except FileNotFoundError:
-        print('Error. Requested file does not exist. Please try again.')
+    while True:
+        try:
+            base_path = Path('unit_10')
+            shorthand_file = input('Enter file name here (Tarzan.txt): ')
+            file_name = base_path / shorthand_file
+            with open(file_name, 'r') as file:
+                data = wordFreq(file)
+                printWds(data)
+        except FileNotFoundError:
+            print('Error. Requested file does not exist. Please try again.')
+        test = input('Press enter to continue. Enter q to quit: ')
+        if test == 'q':
+            break
+    print('Exiting')
 
 
 if __name__ == "__main__":
